@@ -1,0 +1,17 @@
+[overlay]
+schema_version = "1"
+profile = "l10x"
+base_skill = "lets-onboard-repo"
+base_repo = "https://github.com/letsbe10x/skill-hub"
+
+[hooks]
+pre = "hooks/l10x.pre.md"
+post = "hooks/l10x.post.md"
+
+[anchors]
+pre_after = "## Overview"
+post_before = "## Anti-patterns"
+
+[meta]
+description = "letsbe10x runtime augmentation — context pre-flight, governance, pack enrichment"
+maintainer = "letsbe10x"
