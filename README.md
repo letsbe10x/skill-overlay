@@ -21,19 +21,19 @@ scripts/
 ## Compose a skill
 
 ```bash
-# Render base skill + l10x overlay
+# Render base skill + lets overlay
 ./scripts/compose-skill.sh \
   --skill lets-develop-feature \
-  --profile l10x \
+  --profile lets \
   --output /tmp/rendered-skills
 
 # Install the composed skill
-l10x skill install /tmp/rendered-skills/lets-develop-feature
+lets skill install /tmp/rendered-skills/lets-develop-feature
 ```
 
 ## Automated sync
 
-`l10x skill sync` fetches base skills from skill-hub and composes them with the
+`lets skill sync` fetches base skills from skill-hub and composes them with the
 matching overlay automatically. The manual `compose-skill.sh` script is deprecated
 in favour of the sync command (see ADR decision-024 in ground-truth).
 
@@ -49,7 +49,7 @@ in favour of the sync command (see ADR decision-024 in ground-truth).
 
 1. Ensure the base skill exists in
    [skill-hub](https://github.com/letsbe10x/skill-hub). Overlays without a
-   matching base are orphaned and will be ignored by `l10x skill sync`.
+   matching base are orphaned and will be ignored by `lets skill sync`.
 2. Create `profiles/l10x/<skill-name>/overlay.toml`:
    ```toml
    [overlay]
@@ -73,7 +73,7 @@ in favour of the sync command (see ADR decision-024 in ground-truth).
 3. Write hook files in `profiles/l10x/<skill-name>/hooks/`:
    - `l10x.pre.md` — context pre-flight, governance checks, run directory loading
    - `l10x.post.md` — enrichment, sync, pack updates
-4. Test composition: `l10x skill sync --skill <name>` and verify the output.
+4. Test composition: `lets skill sync --skill <name>` and verify the output.
 5. Open a PR.
 
 ### Anchor placement

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# compose-skill.sh — render a final SKILL.md from skill-hub base + l10x overlay
-# Usage: ./scripts/compose-skill.sh --skill <name> --profile l10x --output /tmp/rendered
+# compose-skill.sh — render a final SKILL.md from skill-hub base + lets overlay
+# Usage: ./scripts/compose-skill.sh --skill <name> --profile lets --output /tmp/rendered
 set -euo pipefail
 
 SKILL=""
