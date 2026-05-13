@@ -1,0 +1,14 @@
+# Bundle: pm
+# Default rules applied when this bundle is installed.
+schema_version: "1"
+bundle_id: pm
+rule_class: universal
+
+rules:
+  mutation_policy: additive_only
+  require_evidence: true
+  require_stakeholder_context: true
+  require_success_criteria: true
+  opportunity_scoring: enabled
+  prd_linkage: required
+  decision_audit_trail: true
