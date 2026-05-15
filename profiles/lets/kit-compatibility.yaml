@@ -1,0 +1,46 @@
+# Kit compatibility metadata (PRD-125)
+# Maps kit IDs to overlay compatibility information.
+schema_version: "1"
+
+compatibility:
+  stack.java:
+    compatible_overlays:
+      - lets-develop-feature
+      - lets-review-code
+      - lets-verify-change
+      - lets-create-plan
+    notes: "Java-specific rules for import ordering, naming, patterns"
+
+  stack.python:
+    compatible_overlays:
+      - lets-develop-feature
+      - lets-review-code
+      - lets-verify-change
+      - lets-create-plan
+    notes: "Python-specific rules for typing, imports, docstring style"
+
+  platform.frontend:
+    compatible_overlays:
+      - lets-develop-feature
+      - lets-review-code
+      - lets-research-ux-walkthrough
+    notes: "Frontend-specific rules for component structure, accessibility"
+
+  domain.healthcare:
+    compatible_overlays:
+      - lets-develop-feature
+      - lets-review-code
+      - lets-verify-change
+    notes: "HIPAA/PHI handling rules, audit requirements"
+
+  tool.jira:
+    compatible_overlays:
+      - lets-create-plan
+      - lets-verify-ready
+    notes: "Jira-specific field mappings and workflow transitions"
+
+  tool.linear:
+    compatible_overlays:
+      - lets-create-plan
+      - lets-verify-ready
+    notes: "Linear-specific field mappings and workflow transitions"

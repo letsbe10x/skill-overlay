@@ -1,0 +1,14 @@
+# Bundle: design
+# Default rules applied when this bundle is installed.
+schema_version: "1"
+bundle_id: design
+rule_class: universal
+
+rules:
+  mutation_policy: additive_only
+  require_evidence: true
+  require_accessibility_check: true
+  require_design_system_alignment: true
+  require_ux_rationale: true
+  component_inventory: enabled
+  visual_regression_gate: recommended

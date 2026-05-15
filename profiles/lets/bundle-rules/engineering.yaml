@@ -1,0 +1,15 @@
+# Bundle: engineering
+# Default rules applied when this bundle is installed.
+schema_version: "1"
+bundle_id: engineering
+rule_class: universal
+
+rules:
+  mutation_policy: additive_only
+  require_evidence: true
+  require_tests: true
+  require_type_safety: true
+  max_change_scope: module
+  review_before_merge: true
+  governance_classification: required
+  breaking_change_gate: explicit_approval
