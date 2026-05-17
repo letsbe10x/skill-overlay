@@ -8,12 +8,12 @@ Each overlay adds letsbe10x-specific pre-flight and post-run hooks around a base
 
 ```
 profiles/
-  l10x/
+  lets/
     <skill-name>/
       overlay.toml      # manifest: base skill, profile, hook anchors
       hooks/
-        l10x.pre.md     # pre-flight steps (context, governance)
-        l10x.post.md    # post-run steps (enrichment, sync)
+        lets.pre.md     # pre-flight steps (context, governance)
+        lets.post.md    # post-run steps (enrichment, sync)
 scripts/
   compose-skill.sh      # render base + overlay into a final SKILL.md
 ```
@@ -41,7 +41,7 @@ in favour of the sync command (see ADR decision-024 in ground-truth).
 
 | Profile | Description |
 |---|---|
-| `l10x` | Full letsbe10x augmentation: context pre-flight, governance, pack enrichment |
+| `lets` | Full letsbe10x augmentation: context pre-flight, governance, pack enrichment |
 
 ## Contributing
 
@@ -50,17 +50,17 @@ in favour of the sync command (see ADR decision-024 in ground-truth).
 1. Ensure the base skill exists in
    [skill-hub](https://github.com/letsbe10x/skill-hub). Overlays without a
    matching base are orphaned and will be ignored by `lets skill sync`.
-2. Create `profiles/l10x/<skill-name>/overlay.toml`:
+2. Create `profiles/lets/<skill-name>/overlay.toml`:
    ```toml
    [overlay]
    schema_version = "1"
-   profile = "l10x"
+   profile = "lets"
    base_skill = "<skill-name>"
    base_repo = "https://github.com/letsbe10x/skill-hub"
 
    [hooks]
-   pre = "hooks/l10x.pre.md"
-   post = "hooks/l10x.post.md"
+   pre = "hooks/lets.pre.md"
+   post = "hooks/lets.post.md"
 
    [anchors]
    pre_after = "## Overview"
@@ -70,9 +70,9 @@ in favour of the sync command (see ADR decision-024 in ground-truth).
    description = "letsbe10x runtime augmentation"
    maintainer = "letsbe10x"
    ```
-3. Write hook files in `profiles/l10x/<skill-name>/hooks/`:
-   - `l10x.pre.md` — context pre-flight, governance checks, run directory loading
-   - `l10x.post.md` — enrichment, sync, pack updates
+3. Write hook files in `profiles/lets/<skill-name>/hooks/`:
+   - `lets.pre.md` — context pre-flight, governance checks, run directory loading
+   - `lets.post.md` — enrichment, sync, pack updates
 4. Test composition: `lets skill sync --skill <name>` and verify the output.
 5. Open a PR.
 
@@ -86,6 +86,6 @@ If an anchor heading is not found in the base skill, fallback placement is used
 
 ### Rules
 
-- Hooks must only add `l10x`-specific behaviour (governance, context, packs).
+- Hooks must only add letsbe10x-specific behaviour (governance, context, packs).
 - Never duplicate base skill content in a hook.
 - Every overlay must have a matching base in skill-hub — orphaned overlays are a bug.
