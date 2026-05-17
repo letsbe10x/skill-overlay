@@ -4,7 +4,7 @@
 set -euo pipefail
 
 SKILL=""
-PROFILE="l10x"
+PROFILE="lets"
 OUTPUT_DIR=""
 SKILL_HUB_DIR=""
 
@@ -35,8 +35,8 @@ fi
 
 [[ ! -f "$BASE_SKILL" ]] && { echo "error: base skill not found at ${BASE_SKILL}"; exit 1; }
 
-PRE_HOOK="${OVERLAY_DIR}/hooks/l10x.pre.md"
-POST_HOOK="${OVERLAY_DIR}/hooks/l10x.post.md"
+PRE_HOOK="${OVERLAY_DIR}/hooks/lets.pre.md"
+POST_HOOK="${OVERLAY_DIR}/hooks/lets.post.md"
 
 mkdir -p "${OUTPUT_DIR}/${SKILL}"
 OUT="${OUTPUT_DIR}/${SKILL}/SKILL.md"
