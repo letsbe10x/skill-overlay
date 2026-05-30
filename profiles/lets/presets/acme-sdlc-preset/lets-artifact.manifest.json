@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "artifact": {
+    "id": "acme-sdlc-preset",
+    "kind": "skill",
+    "role": "preset",
+    "version": "0.1.0",
+    "title": "Acme SDLC preset",
+    "description": "Appends compliance checklist for LAEM harness validation.",
+    "publisher": "letsbe10x-examples",
+    "license": "MIT",
+    "tags": ["example", "preset"]
+  },
+  "requires": {
+    "letsbe10x_version": ">=0.1.0",
+    "targets": [
+      {
+        "kind": "skill",
+        "id": "lets-develop-feature",
+        "role": "core",
+        "min_version": "1.0.0"
+      }
+    ]
+  },
+  "provides": {
+    "compositions": [
+      {
+        "target": "skill:lets-develop-feature",
+        "section": "body",
+        "file": "compositions/develop-feature-append.md",
+        "strategy": "append"
+      }
+    ]
+  },
+  "governance_impact": {
+    "adds_mutation_policy": "read_only",
+    "extends_critical_paths": false
+  },
+  "distribution": {
+    "source_ref": "examples/harness/acme-sdlc-preset",
+    "content_hash": "sha256:6194bd2c7608e32f1c94b6e0489a2e3fae1df97bc6e0ea4c9cb5ecc29f8c134d",
+    "trust_tier": "community"
+  }
+}
