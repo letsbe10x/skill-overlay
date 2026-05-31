@@ -59,6 +59,16 @@ lets harness migrate-overlay --repo .
 - Document preset id in team runbooks.
 - Enterprise orgs: reference preset via `harness_layers` in skill set, not overlay paths.
 
+## Overlay catalog (wave 7)
+
+Machine-readable mapping of all legacy overlay trees to target presets:
+
+- [profiles/lets/overlay-catalog.yml](../profiles/lets/overlay-catalog.yml)
+- Verify locally: `./scripts/verify-overlay-catalog.sh`
+
+The engineering preset now covers all first-party SDLC overlay skills; research
+skills map to `lets-research-studio-preset`.
+
 ## Tracking
 
 Program status: [enterprise distribution (PRD-048)](enterprise-distribution-prd-048.md).

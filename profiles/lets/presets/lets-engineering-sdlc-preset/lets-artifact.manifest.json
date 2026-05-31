@@ -9,16 +9,86 @@
     "description": "Shared engineering bundle rules and kit-injection guidance for first-party SDLC skills.",
     "publisher": "letsbe10x",
     "license": "MIT",
-    "tags": ["engineering", "sdlc", "preset", "bundle"]
+    "tags": [
+      "engineering",
+      "sdlc",
+      "preset",
+      "bundle"
+    ]
   },
   "requires": {
     "letsbe10x_version": ">=0.1.0",
     "targets": [
-      {"kind": "skill", "id": "lets-develop-feature", "role": "core"},
-      {"kind": "skill", "id": "lets-verify-change", "role": "core"},
-      {"kind": "skill", "id": "lets-review-code", "role": "core"},
-      {"kind": "skill", "id": "lets-create-plan", "role": "core"},
-      {"kind": "skill", "id": "lets-start-here", "role": "core"}
+      {
+        "kind": "skill",
+        "id": "lets-develop-feature",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-verify-change",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-review-code",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-create-plan",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-start-here",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-verify-ready",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-spec-to-pr",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-review-pr",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-onboard-repo",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-bootstrap-repo",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-bootstrap-agents-md",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-audit-repo",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-author-skill",
+        "role": "core"
+      },
+      {
+        "kind": "skill",
+        "id": "lets-brainstorm",
+        "role": "core"
+      }
     ]
   },
   "provides": {
@@ -52,6 +122,60 @@
         "section": "body",
         "file": "compositions/engineering-sdlc-append.md",
         "strategy": "append"
+      },
+      {
+        "target": "skill:lets-verify-ready",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-spec-to-pr",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-review-pr",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-onboard-repo",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-bootstrap-repo",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-bootstrap-agents-md",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-audit-repo",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-author-skill",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-brainstorm",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
       }
     ]
   },
@@ -61,7 +185,7 @@
   },
   "distribution": {
     "source_ref": "skill-overlay/profiles/lets/presets/lets-engineering-sdlc-preset",
-    "content_hash": "sha256:851eca60c3d66d5b25236b194ab3ca44004ffc9db6d0b4ecf32c0720327061f5",
+    "content_hash": "sha256:eb19d9bac8f6559b0a42d4ba4d3e535b8fdeb87f94489728bfe8748ac5632cbd",
     "trust_tier": "first_party"
   }
 }
