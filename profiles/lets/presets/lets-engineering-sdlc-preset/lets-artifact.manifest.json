@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "artifact": {
+    "id": "lets-engineering-sdlc-preset",
+    "kind": "skill",
+    "role": "preset",
+    "version": "0.1.0",
+    "title": "Lets engineering SDLC preset",
+    "description": "Shared engineering bundle rules and kit-injection guidance for first-party SDLC skills.",
+    "publisher": "letsbe10x",
+    "license": "MIT",
+    "tags": ["engineering", "sdlc", "preset", "bundle"]
+  },
+  "requires": {
+    "letsbe10x_version": ">=0.1.0",
+    "targets": [
+      {"kind": "skill", "id": "lets-develop-feature", "role": "core"},
+      {"kind": "skill", "id": "lets-verify-change", "role": "core"},
+      {"kind": "skill", "id": "lets-review-code", "role": "core"},
+      {"kind": "skill", "id": "lets-create-plan", "role": "core"},
+      {"kind": "skill", "id": "lets-start-here", "role": "core"}
+    ]
+  },
+  "provides": {
+    "compositions": [
+      {
+        "target": "skill:lets-develop-feature",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-verify-change",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-review-code",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-create-plan",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-start-here",
+        "section": "body",
+        "file": "compositions/engineering-sdlc-append.md",
+        "strategy": "append"
+      }
+    ]
+  },
+  "governance_impact": {
+    "adds_mutation_policy": "read_only",
+    "extends_critical_paths": false
+  },
+  "distribution": {
+    "source_ref": "skill-overlay/profiles/lets/presets/lets-engineering-sdlc-preset",
+    "content_hash": "sha256:851eca60c3d66d5b25236b194ab3ca44004ffc9db6d0b4ecf32c0720327061f5",
+    "trust_tier": "first_party"
+  }
+}
