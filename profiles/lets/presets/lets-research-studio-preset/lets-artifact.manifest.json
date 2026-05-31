@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "artifact": {
+    "id": "lets-research-studio-preset",
+    "kind": "skill",
+    "role": "preset",
+    "version": "0.1.0",
+    "title": "Lets Research Studio preset",
+    "description": "Shared research-studio bundle guidance for first-party research skills.",
+    "publisher": "letsbe10x",
+    "license": "MIT",
+    "tags": ["research", "preset", "research-studio"]
+  },
+  "requires": {
+    "letsbe10x_version": ">=0.1.0",
+    "targets": [
+      {"kind": "skill", "id": "lets-research-competitive-scan", "role": "core"},
+      {"kind": "skill", "id": "lets-research-content-evaluate", "role": "core"},
+      {"kind": "skill", "id": "lets-research-prd-grooming", "role": "core"},
+      {"kind": "skill", "id": "lets-research-ux-walkthrough", "role": "core"},
+      {"kind": "skill", "id": "lets-opportunity-discovery", "role": "core"}
+    ]
+  },
+  "provides": {
+    "compositions": [
+      {
+        "target": "skill:lets-research-competitive-scan",
+        "section": "body",
+        "file": "compositions/research-studio-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-research-content-evaluate",
+        "section": "body",
+        "file": "compositions/research-studio-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-research-prd-grooming",
+        "section": "body",
+        "file": "compositions/research-studio-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-research-ux-walkthrough",
+        "section": "body",
+        "file": "compositions/research-studio-append.md",
+        "strategy": "append"
+      },
+      {
+        "target": "skill:lets-opportunity-discovery",
+        "section": "body",
+        "file": "compositions/research-studio-append.md",
+        "strategy": "append"
+      }
+    ]
+  },
+  "governance_impact": {
+    "adds_mutation_policy": "read_only",
+    "extends_critical_paths": false
+  },
+  "distribution": {
+    "source_ref": "skill-overlay/profiles/lets/presets/lets-research-studio-preset",
+    "content_hash": "sha256:c1c7061aa1ead2e67eacdea8989478453e81306f63724f54eaf17a816135c58c",
+    "trust_tier": "first_party"
+  }
+}
