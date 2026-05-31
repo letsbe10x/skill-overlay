@@ -1,5 +1,8 @@
 # Overlay → LAEM preset migration
 
+> **Full guide:** [docs/overlay-migration.md](../../../docs/overlay-migration.md) and
+> [docs/README.md](../../../docs/README.md).
+
 ## Shipped presets
 
 | Preset | Skills |

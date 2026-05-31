@@ -1,0 +1,94 @@
+# Canonical mapping: legacy per-skill overlays → LAEM presets (PRD-048 wave 7).
+# Hook-based overlay trees remain for kit injection until removed; enterprise pins use presets.
+
+schema_version: "1"
+
+presets:
+  acme-sdlc-preset:
+    path: presets/acme-sdlc-preset
+    skills:
+      - lets-develop-feature
+  lets-engineering-sdlc-preset:
+    path: presets/lets-engineering-sdlc-preset
+    skills:
+      - lets-develop-feature
+      - lets-verify-change
+      - lets-review-code
+      - lets-create-plan
+      - lets-start-here
+      - lets-verify-ready
+      - lets-spec-to-pr
+      - lets-review-pr
+      - lets-onboard-repo
+      - lets-bootstrap-repo
+      - lets-bootstrap-agents-md
+      - lets-audit-repo
+      - lets-author-skill
+      - lets-brainstorm
+  lets-research-studio-preset:
+    path: presets/lets-research-studio-preset
+    skills:
+      - lets-research-competitive-scan
+      - lets-research-content-evaluate
+      - lets-research-prd-grooming
+      - lets-research-ux-walkthrough
+      - lets-opportunity-discovery
+
+legacy_overlays:
+  - skill: lets-audit-repo
+    overlay: lets-audit-repo/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-author-skill
+    overlay: lets-author-skill/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-bootstrap-agents-md
+    overlay: lets-bootstrap-agents-md/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-bootstrap-repo
+    overlay: lets-bootstrap-repo/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-brainstorm
+    overlay: lets-brainstorm/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-create-plan
+    overlay: lets-create-plan/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-develop-feature
+    overlay: lets-develop-feature/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-onboard-repo
+    overlay: lets-onboard-repo/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-research-competitive-scan
+    overlay: lets-research-competitive-scan/overlay.toml
+    target_preset: lets-research-studio-preset
+  - skill: lets-research-content-evaluate
+    overlay: lets-research-content-evaluate/overlay.toml
+    target_preset: lets-research-studio-preset
+  - skill: lets-research-prd-grooming
+    overlay: lets-research-prd-grooming/overlay.toml
+    target_preset: lets-research-studio-preset
+  - skill: lets-research-ux-walkthrough
+    overlay: lets-research-ux-walkthrough/overlay.toml
+    target_preset: lets-research-studio-preset
+  - skill: lets-opportunity-discovery
+    overlay: lets-opportunity-discovery/overlay.toml
+    target_preset: lets-research-studio-preset
+  - skill: lets-review-code
+    overlay: lets-review-code/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-review-pr
+    overlay: lets-review-pr/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-spec-to-pr
+    overlay: lets-spec-to-pr/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-start-here
+    overlay: lets-start-here/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-verify-change
+    overlay: lets-verify-change/overlay.toml
+    target_preset: lets-engineering-sdlc-preset
+  - skill: lets-verify-ready
+    overlay: lets-verify-ready/overlay.toml
+    target_preset: lets-engineering-sdlc-preset

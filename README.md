@@ -1,91 +1,118 @@
 # skill-overlay
 
-letsbe10x augmentation profiles for [skill-hub](https://github.com/letsbe10x/skill-hub) skills.
+letsbe10x augmentation for [skill-hub](https://github.com/letsbe10x/skill-hub) skills:
+**LAEM presets** (composition + provenance) and **legacy overlay hooks** (pre/post injection).
 
-Each overlay adds letsbe10x-specific pre-flight and post-run hooks around a base skill — context readiness checks, governance, pack enrichment, run tracking.
+## Documentation
+
+**Full operator and author guide:** [docs/README.md](docs/README.md)
+
+| Topic | Doc |
+|-------|-----|
+| LAEM roles and stack | [docs/laem-overview.md](docs/laem-overview.md) |
+| Public vs private vs org-only | [docs/public-private-org-extensions.md](docs/public-private-org-extensions.md) |
+| Provenance & defense in depth | [docs/provenance-defense-in-depth.md](docs/provenance-defense-in-depth.md) |
+| CLI command map | [docs/operator-command-reference.md](docs/operator-command-reference.md) |
+| Use cases | [docs/use-cases.md](docs/use-cases.md) |
+| Enterprise / PRD-048 status | [docs/enterprise-distribution-prd-048.md](docs/enterprise-distribution-prd-048.md) |
+| Author a public preset | [docs/authoring-presets.md](docs/authoring-presets.md) |
+| Legacy overlay migration | [docs/overlay-migration.md](docs/overlay-migration.md) |
+
+Agent skill (harness operations): `skills/lets-artifact-harness/` in the `skills` repo.
 
 ## Structure
 
 ```
 profiles/
   lets/
-    <skill-name>/
-      overlay.toml      # manifest: base skill, profile, hook anchors
+    presets/                    # LAEM presets (preferred)
+      <preset-id>/
+        lets-artifact.manifest.json
+        compositions/
+    <skill-name>/               # Legacy overlay hooks
+      overlay.toml
       hooks/
-        lets.pre.md     # pre-flight steps (context, governance)
-        lets.post.md    # post-run steps (enrichment, sync)
 scripts/
-  compose-skill.sh      # render base + overlay into a final SKILL.md
+  compose-skill.sh              # legacy manual compose (prefer lets skill sync)
+docs/                           # operator + author documentation
 ```
 
-## Compose a skill
+## Quick start — LAEM preset
 
 ```bash
-# Render base skill + lets overlay
+lets harness init
+lets harness add ./profiles/lets/presets/lets-engineering-sdlc-preset
+lets harness list
+lets skill sync
+```
+
+## Quick start — legacy overlay (until migrated)
+
+`lets skill sync` fetches base skills from skill-hub and composes them with matching
+`overlay.toml` hooks. Prefer migrating to presets — see [docs/overlay-migration.md](docs/overlay-migration.md).
+
+```bash
+lets skill sync --skill lets-develop-feature
+```
+
+Manual compose (deprecated):
+
+```bash
 ./scripts/compose-skill.sh \
   --skill lets-develop-feature \
   --profile lets \
   --output /tmp/rendered-skills
-
-# Install the composed skill
-lets skill install /tmp/rendered-skills/lets-develop-feature
 ```
 
-## Automated sync
+## Enterprise (org-only distribution)
 
-`lets skill sync` fetches base skills from skill-hub and composes them with the
-matching overlay automatically. The manual `compose-skill.sh` script is deprecated
-in favour of the sync command (see ADR decision-024 in ground-truth).
+Public presets in this repo are **voluntary**. HQ-mandated rollouts use the control-plane
+skill-set lifecycle and `lets enterprise sync` — not a second manifest format.
 
-## Profiles
+See [docs/enterprise-distribution-prd-048.md](docs/enterprise-distribution-prd-048.md).
 
-| Profile | Description |
-|---|---|
-| `lets` | Full letsbe10x augmentation: context pre-flight, governance, pack enrichment |
+## Shipped public presets
+
+| Preset | Description |
+|--------|-------------|
+| `acme-sdlc-preset` | Example compliance append |
+| `lets-engineering-sdlc-preset` | Engineering SDLC shared rules |
+| `lets-research-studio-preset` | Research Studio shared rules |
 
 ## Contributing
 
-### Adding an overlay for a new skill
+### New LAEM preset (preferred)
 
-1. Ensure the base skill exists in
-   [skill-hub](https://github.com/letsbe10x/skill-hub). Overlays without a
-   matching base are orphaned and will be ignored by `lets skill sync`.
-2. Create `profiles/lets/<skill-name>/overlay.toml`:
-   ```toml
-   [overlay]
-   schema_version = "1"
-   profile = "lets"
-   base_skill = "<skill-name>"
-   base_repo = "https://github.com/letsbe10x/skill-hub"
+See [docs/authoring-presets.md](docs/authoring-presets.md).
 
-   [hooks]
-   pre = "hooks/lets.pre.md"
-   post = "hooks/lets.post.md"
+### Legacy overlay (maintenance only)
 
-   [anchors]
-   pre_after = "## Overview"
-   post_before = "## Outputs"
+1. Base skill must exist in skill-hub.
+2. Add `profiles/lets/<skill-name>/overlay.toml` and hooks per template below.
+3. Prefer planning migration to a preset instead of expanding legacy surface.
 
-   [meta]
-   description = "letsbe10x runtime augmentation"
-   maintainer = "letsbe10x"
-   ```
-3. Write hook files in `profiles/lets/<skill-name>/hooks/`:
-   - `lets.pre.md` — context pre-flight, governance checks, run directory loading
-   - `lets.post.md` — enrichment, sync, pack updates
-4. Test composition: `lets skill sync --skill <name>` and verify the output.
-5. Open a PR.
+```toml
+[overlay]
+schema_version = "1"
+profile = "lets"
+base_skill = "<skill-name>"
+base_repo = "https://github.com/letsbe10x/skill-hub"
 
-### Anchor placement
+[hooks]
+pre = "hooks/lets.pre.md"
+post = "hooks/lets.post.md"
 
-- `pre_after` — the pre-hook is injected immediately after this heading in the base
-- `post_before` — the post-hook is injected immediately before this heading
+[anchors]
+pre_after = "## Overview"
+post_before = "## Outputs"
 
-If an anchor heading is not found in the base skill, fallback placement is used
-(pre: before first `##` heading; post: appended at end).
+[meta]
+description = "letsbe10x runtime augmentation"
+maintainer = "letsbe10x"
+```
 
 ### Rules
 
-- Hooks must only add letsbe10x-specific behaviour (governance, context, packs).
-- Never duplicate base skill content in a hook.
-- Every overlay must have a matching base in skill-hub — orphaned overlays are a bug.
+- Hooks add letsbe10x-specific behavior only (governance, context, packs).
+- Never duplicate base skill content in hooks.
+- No customer secrets or org-specific compliance in public PRs.
