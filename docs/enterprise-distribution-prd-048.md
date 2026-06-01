@@ -10,7 +10,7 @@ LAEM bridge (waves): `ground-truth/features/prd-048-.../delivery/laem-bridge.md`
 
 ## Principle
 
-- **Metadata only** on control-plane — no remote execution, no raw prompt hosting.
+- **Metadata only** on control-plane — no hosted execution; no raw prompt hosting. Remote execution (when used) happens on a customer execution-plane, not the control-plane.
 - **Local verification and apply** in `core` — hashes and signatures are authority.
 - **Single harness schema** — enterprise payloads use `harness_layers[]`, not a parallel format.
 
